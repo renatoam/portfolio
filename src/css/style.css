@@ -185,27 +185,27 @@ header .login__modal--overlay {
   -o-transform: scale(1.1);
 }
 
-.iniciais__item[data-tipo="planta"]:hover {
+.iniciais__item[data-tipo="Planta"]:hover {
   background-color: #7bed9f;
 }
 
-.iniciais__item[data-tipo="planta"] button {
+.iniciais__item[data-tipo="Planta"] button {
   background-color: #2ed573;
 }
 
-.iniciais__item[data-tipo="agua"]:hover {
+.iniciais__item[data-tipo="Água"]:hover {
   background-color: #70a1ff;
 }
 
-.iniciais__item[data-tipo="agua"] button {
+.iniciais__item[data-tipo="Água"] button {
   background-color: #1e90ff;
 }
 
-.iniciais__item[data-tipo="fogo"]:hover {
+.iniciais__item[data-tipo="Fogo"]:hover {
   background-color: #ff6b81;
 }
 
-.iniciais__item[data-tipo="fogo"] button {
+.iniciais__item[data-tipo="Fogo"] button {
   background-color: #ff4757;
 }
 
@@ -256,55 +256,6 @@ header .login__modal--overlay {
   z-index: 0;
 }
 
-/* .iniciais__modal.show .iniciais__modal--overlay {
-  max-height: 100vh;
-}
-
-.iniciais__modal.show .iniciais__modal--wrapper {
-  max-height: 800px;
-  overflow: visible;
-}
-
-.iniciais__modal.show .iniciais__modal--fechar {
-  max-height: 800px;
-  overflow: visible;
-} */
-
-.iniciais__modal--fechar {
-  align-items: center;
-  background-color: #006266;
-  border-radius: 100%;
-  color: #FFF;
-  cursor: pointer;
-  display: flex;
-  font-size: .9rem;
-  font-weight: bold;
-  height: 30px;
-  justify-content: center;
-  left: calc((100vw - 450px) / 2);
-  position: fixed;
-  top: calc((100vh - 700px) / 2);
-  transform: translate(-50%, -50%);
-  width: 30px;
-  z-index: 1;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
-/* 
-  max-height: 0;
-  overflow: hidden;
-  transition:all .4s ease-in-out;
-  -webkit-transition:all .4s ease-in-out;
-  -moz-transition:all .4s ease-in-out;
-  -ms-transition:all .4s ease-in-out;
-  -o-transition:all .4s ease-in-out; */
-}
-
 .iniciais__modal--overlay {
   background-color: rgba(0,0,0,0.7);
   height: 100%;
@@ -312,36 +263,30 @@ header .login__modal--overlay {
   position: fixed;
   top: 0;
   width: 100%;
-/* 
-  max-height: 0;
-  overflow: hidden;
-  transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  -moz-transition: all .4s ease-in-out;
-  -ms-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out; */
 }
 
 .iniciais__modal--wrapper {
-  background-color: #7bed9f;
   border-radius: 10px;
   left: 50%;
   position: fixed;
   top: 50%;
   transform: translate(-50%,-50%);
   width: 450px;
-/* 
-  max-height: 0;
-  overflow: hidden;
-  transition:all .4s ease-in-out;
-  -webkit-transition:all .4s ease-in-out;
-  -moz-transition:all .4s ease-in-out;
-  -ms-transition:all .4s ease-in-out;
-  -o-transition:all .4s ease-in-out; */
+}
+
+.iniciais__modal--wrapper[data-tipo="Planta"] {
+  background-color: #7bed9f;
+}
+
+.iniciais__modal--wrapper[data-tipo="Água"] {
+  background-color: #70a1ff;
+}
+
+.iniciais__modal--wrapper[data-tipo="Fogo"] {
+  background-color: #ff6b81;
 }
 
 .iniciais__modal--wrapper::before {
-  background-image: url(./../assets/leaf.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -355,15 +300,67 @@ header .login__modal--overlay {
   z-index: 0;
 }
 
+.iniciais__modal--wrapper[data-tipo="Planta"]::before {
+  background-image: url(./../assets/leaf.svg);
+}
+
+.iniciais__modal--wrapper[data-tipo="Água"]::before {
+  background-image: url(./../assets/water.svg);
+}
+
+.iniciais__modal--wrapper[data-tipo="Fogo"]::before {
+  background-image: url(./../assets/fire.svg);
+}
+
 .iniciais__modal--item:not(:first-child) {
   display: none;
 }
 
 .iniciais__modal--item {
   color: #33363A;
-  height: 75vh;
+  max-height: 80vh;
   padding: 60px 30px 30px;
   position: relative;
+}
+
+.iniciais__modal--fechar {
+  align-items: center;
+  border-radius: 100%;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  font-size: .9rem;
+  font-weight: bold;
+  height: 30px;
+  justify-content: center;
+  /* left: calc((100vw - 450px) / 2); */
+  left: 0;
+  position: absolute;
+  top: 0;
+  /* top: calc((100vh - 700px) / 2); */
+  transform: translate(-50%, -50%);
+  width: 30px;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
+
+.iniciais__modal--fechar[data-tipo="Planta"] {
+  background-color: #218c74;
+}
+
+.iniciais__modal--fechar[data-tipo="Água"] {
+  background-color: #227093;
+}
+
+.iniciais__modal--fechar[data-tipo="Fogo"] {
+  background-color: #b33939;
 }
 
 .iniciais__modal--item .imagem {
@@ -468,7 +465,6 @@ header .login__modal--overlay {
 }
 
 .iniciais__modal--item .evolucoes h3 {
-  background-color: #009432;
   border-radius: 15px;
   color: #FFF;
   font-size: .8rem;
@@ -479,6 +475,18 @@ header .login__modal--overlay {
   text-transform: uppercase;
   transform: translate(-50%, -50%);
   width: 30%;
+}
+
+.iniciais__modal--item .evolucoes h3[data-tipo="Planta"] {
+  background-color: #218c74;
+}
+
+.iniciais__modal--item .evolucoes h3[data-tipo="Água"] {
+  background-color: #227093;
+}
+
+.iniciais__modal--item .evolucoes h3[data-tipo="Fogo"] {
+  background-color: #b33939;
 }
 
 .iniciais__modal--item .evolucoes .evolucoes__wrapper {
@@ -511,7 +519,6 @@ header .login__modal--overlay {
 }
 
 .iniciais__modal--item .btn-escolher {
-  background-color: #009432;
   border: none;
   border-radius: 15px;
   color: #FFF;
@@ -527,6 +534,24 @@ header .login__modal--overlay {
   -o-transition: all .4s ease-in-out;
 }
 
-.iniciais__modal--item .btn-escolher:hover {
-  background-color: #006266;
+.iniciais__modal--item .btn-escolher[data-tipo="Planta"] {
+  background-color: #2ed573;
+}
+.iniciais__modal--item .btn-escolher[data-tipo="Água"] {
+  background-color: #74b9ff;
+}
+.iniciais__modal--item .btn-escolher[data-tipo="Fogo"] {
+  background-color: #ff4757;
+}
+
+.iniciais__modal--item .btn-escolher[data-tipo="Planta"]:hover {
+  background-color: #218c74;
+}
+
+.iniciais__modal--item .btn-escolher[data-tipo="Água"]:hover {
+  background-color: #227093;
+}
+
+.iniciais__modal--item .btn-escolher[data-tipo="Fogo"]:hover {
+  background-color: #b33939;
 }

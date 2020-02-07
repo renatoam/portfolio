@@ -1,0 +1,59 @@
+{
+  "name": "portfolio-pokemon",
+  "version": "1.0.0",
+  "description": "Modelo para portfolio com temática pokémon com consumo da API de pokemon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "esm": "node -r esm js/main.js",
+    "dev": "webpack-dev-server --config webpack.config.js --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renatoam/portfolio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renatoam/portfolio/issues"
+  },
+  "homepage": "https://github.com/renatoam/portfolio#readme",
+  "dependencies": {
+    "esm": "^3.2.25"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/runtime": "^7.6.3",
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "autoprefixer": "^9.6.4",
+    "babel-loader": "^8.0.6",
+    "babel-polyfill": "^6.26.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.2.0",
+    "del": "^5.1.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^25.1.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
+    "sass-resources-loader": "^2.0.1",
+    "style-loader": "^1.0.0",
+    "url-loader": "^3.0.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2",
+    "webpack-stream": "^5.2.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
+    }
+  }
+}
