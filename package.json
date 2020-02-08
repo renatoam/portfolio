@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "esm": "node -r esm js/main.js",
+    "esm": "node -r esm src/js/main.js",
     "dev": "webpack-dev-server --config webpack.config.js --mode development"
   },
   "repository": {

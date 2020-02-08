@@ -1,14 +1,34 @@
-// import App from "./App";
-// const http = require('http');
+const base = "https://pokeapi.co/api/v2/";
 
-// const api = () => {
+const Pokedex = {
+  
+  Pokemons: async (params) => {
 
-//   http.createServer((req, res) => {
-  
-//     res.end(App);
-  
-//   }).listen(8080);
-  
-// }
+    if (params == void 0) params = "";
+    
+    const response = await fetch(`${base}pokemon/${params}`);
+    const pokemons = await response.json();
 
-// export default api();
+    return pokemons;
+
+  },
+
+  Evolutions: async (id) => {
+
+    if (id == void 0) id = "";
+    
+    const response = await fetch(`${base}evolution-chain/${id}`);
+    const evolutions = await response.json();
+
+    return evolutions;
+
+  }
+
+}
+
+export default Pokedex;
+
+// Disclaimer: response.json() ou response.text() só podem ser consumidos uma única vez,
+// por isso, quando usei console.log e depois o .then, o 'body' da resposta foi bloqueado
+// Nesse caso, clonamos a resposta pra poder usar mais de uma vez (no console e no .then)
+// console.log("response.json", response.clone().json());
