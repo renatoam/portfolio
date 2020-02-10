@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "esm": "node -r esm src/js/main.js",
-    "dev": "webpack-dev-server --config webpack.config.js --mode development"
+    "dev": "webpack-dev-server --config webpack.config.js --mode development",
+    "build": "webpack --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/renatoam/portfolio#readme",
   "dependencies": {
+    "axios": "^0.19.2",
     "esm": "^3.2.25"
   },
   "devDependencies": {

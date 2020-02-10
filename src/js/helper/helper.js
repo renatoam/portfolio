@@ -47,4 +47,24 @@ const getEvolutions = async idPokemon => {
 
 }
 
-export {qs, setNumber, getEvolutions};
+const getWeakness = types => {
+
+  const template = types.map(async type => {
+
+    return await Pokedex.Types(type).then(data => {
+      
+      return data.damage_relations.double_damage_from.map(item => {
+
+        return `<div data-weakness="weakness-of-${type}">${item.name}</div>`
+
+      }).join("");
+    
+    });
+
+  }).reduce(async (tipo1, tipo2) => await tipo1 + await tipo2);
+
+  return template;
+
+}
+
+export { qs, setNumber, getEvolutions, getWeakness };

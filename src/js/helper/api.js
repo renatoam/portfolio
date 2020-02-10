@@ -1,8 +1,9 @@
 const base = "https://pokeapi.co/api/v2/";
+const axios = require('axios');
 
 const Pokedex = {
   
-  Pokemons: async (params) => {
+  Pokemons: async params => {
 
     if (params == void 0) params = "";
     
@@ -13,7 +14,7 @@ const Pokedex = {
 
   },
 
-  Evolutions: async (id) => {
+  Evolutions: async id => {
 
     if (id == void 0) id = "";
     
@@ -21,6 +22,17 @@ const Pokedex = {
     const evolutions = await response.json();
 
     return evolutions;
+
+  },
+
+  Types: async type => {
+
+    if (type == void 0) type = "";
+    
+    const response = await fetch(`${base}type/${type}`);
+    const types = await response.json();
+
+    return types;
 
   }
 

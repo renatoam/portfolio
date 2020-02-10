@@ -1,5 +1,6 @@
 import pokemons from './Pokemons';
-import { setNumber, getEvolutions } from './../helper/helper';
+import pokebola from './../../assets/icon-pokebola.svg'
+import { setNumber, getEvolutions, getWeakness } from './../helper/helper';
 
 export default async function Modal (id) {
 
@@ -9,14 +10,44 @@ export default async function Modal (id) {
     const number = setNumber(pokemon.id);
     const evolutions = await getEvolutions(pokemon.id);
     const types = pokemon.types.map(t => t.type.name);
+    const weakness = await getWeakness(types);
+    const stats = pokemon.stats.map(item => {
+      return {
+        base: Math.round(item.base_stat / 10), 
+        name: item.stat.name
+      }
+    });
+
+    const schemaStats = (() => {
+
+      const createLevel = x => {
+        let template = "";
+        for (let i = 0; i < x; i++) {
+          template += '<span></span>'
+        }
+        return template;
+      }
+
+      return stats.map(stat => {
+        return `
+          <section class="habilidade">
+            <h4>${stat.name}</h4>
+            <p class="nivel">
+              ${createLevel(stat.base)}
+            </p>
+          </section>  
+        `
+      }).join("")
+
+    })();
 
     const schemaTypes = (() => {
 
       return types.map(type => {
         return `
-          <div>${type}</div>
+          <div data-type-label="${type}">${type}</div>
         `
-      });
+      }).join("");
 
     })();
 
@@ -28,7 +59,7 @@ export default async function Modal (id) {
             <img src="${evo.img}" alt="${evo.name}">
           </figure>
           <h4 class="forma__nome">${evo.name}</h4>
-          <p class="tipo">${types}</p>
+          <p class="tipo" data-type-label="${types}">${types}</p>
         </section>
         `
       }).join("");
@@ -69,71 +100,26 @@ export default async function Modal (id) {
           <section class="caracteristicas">
             <section class="tipo">
               <h4>Tipo</h4>
-              ${schemaTypes}
+              <section class="tipo__wrapper">
+                ${schemaTypes}
+              </section>
             </section>
             <section class="fraqueza">
               <h4>Fraqueza</h4>
-              <div></div>
-              <div></div>
-              <div></div>
+              <section class="fraqueza__wrapper">
+                ${weakness}
+              </section>
             </section>
           </section>
-          <section class="habilidades">
-            <section class="habilidade">
-              <h4>HP</h4>
-              <p class="nivel">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </p>
-            </section>
-            <section class="habilidade">
-              <h4>Ataque</h4>
-              <p class="nivel">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </p>
-            </section>
-            <section class="habilidade">
-              <h4>Defesa</h4>
-              <p class="nivel">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </p>
-            </section>
-            <section class="habilidade">
-              <h4>Velocidade</h4>
-              <p class="nivel">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-              </p>
-            </section>
-          </section>
+          <section class="habilidades">${schemaStats}</section>
         </section>
         <section class="evolucoes">
           <h3 data-type="${types}">Evoluções</h3>
           <section class="evolucoes__wrapper">${schemaEvolutions}</section>
         </section>
-        <button class="btn-escolher" data-type="${types}">Eu escolho você!</button>
+        <figure class="btn-escolher" data-type="${types}">
+          <img src="${pokebola}" alt="${pokemon.name}">
+        </figure>
       </section>
       `
 
