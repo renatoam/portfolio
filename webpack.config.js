@@ -13,7 +13,7 @@ module.exports = {
     main: path.join(__dirname, 'src/js', 'main')
   },
   output: {
-    path: path.resolve(__dirname, 'dist/js'),
+    path: path.resolve(__dirname, 'dist/'),
     filename: 'script.js',
   },
   devServer: {
